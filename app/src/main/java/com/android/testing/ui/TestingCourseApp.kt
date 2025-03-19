@@ -1,13 +1,10 @@
 package com.android.testing.ui
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -15,6 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.android.testing.di.ModuleViewModel
 import com.android.testing.di.ViewModelFactory
+import com.android.testing.ui.home.HomeScreen
 import com.android.testing.ui.login.LoginScreen
 import com.android.testing.ui.login.LoginViewModel
 
@@ -56,9 +54,7 @@ fun TestingCourseApp(startDestination: Destinations) {
         }
 
         composable(route = Destinations.HOME.name) {
-            Box(modifier = Modifier
-                .background(Color.Red)
-                .fillMaxSize())
+            HomeScreen()
         }
 
     }

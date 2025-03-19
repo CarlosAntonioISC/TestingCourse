@@ -2,8 +2,8 @@ package com.android.testing.data.repository
 
 import com.android.testing.data.database.UserDao
 import com.android.testing.data.database.UserEntity
-import com.android.testing.domain.User
-import com.android.testing.domain.UserId
+import com.android.testing.domain.models.User
+import com.android.testing.domain.models.UserId
 import com.android.testing.domain.repository.UserRepository
 
 class RoomUserRepository(

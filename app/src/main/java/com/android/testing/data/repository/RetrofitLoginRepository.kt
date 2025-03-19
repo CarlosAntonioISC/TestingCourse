@@ -2,7 +2,7 @@ package com.android.testing.data.repository
 
 import com.android.testing.data.api.LoginApi
 import com.android.testing.data.api.LoginRequest
-import com.android.testing.domain.UserId
+import com.android.testing.domain.models.UserId
 import com.android.testing.domain.models.Result
 import com.android.testing.domain.models.ServerError
 import com.android.testing.domain.repository.LoginRepository

@@ -1,6 +1,6 @@
 package com.android.testing.domain.repository
 
-import com.android.testing.domain.User
+import com.android.testing.domain.models.User
 
 interface UserRepository {
 

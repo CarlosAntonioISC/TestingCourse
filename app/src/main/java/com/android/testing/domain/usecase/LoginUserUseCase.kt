@@ -1,6 +1,6 @@
 package com.android.testing.domain.usecase
 
-import com.android.testing.domain.User
+import com.android.testing.domain.models.User
 import com.android.testing.domain.models.DomainError
 import com.android.testing.domain.repository.LoginRepository
 import com.android.testing.domain.repository.UserRepository
