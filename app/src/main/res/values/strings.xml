@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TestingCourse</string>
+    <string name="create_account">Crear cuenta</string>
+    <string name="terms_and_conditions">He leído y acepto los términos y condiciones de uso</string>
+    <string name="email">Correo electronico</string>
+    <string name="supporting_text_email">ejemplo@correo.com</string>
+    <string name="age">Edad</string>
+    <string name="supporting_age_validator">18 a 65 años</string>
+    <string name="name">Nombre</string>
+    <string name="supporting_text_name">Solo letras y espacios entre 3 y 20 caracteres</string>
+    <string name="sign_in">Registrarse</string>
+    <string name="password">Contraseña</string>
+    <string name="supporting_text_password">Mínimo 8 caracteres, una letra mayúscula, una letra minúscula y un dígito</string>
+</resources>
