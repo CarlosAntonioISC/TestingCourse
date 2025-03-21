@@ -7,7 +7,7 @@ class PasswordValidator {
         if (!password.any { it.isUpperCase() }) return false
         if (!password.any { it.isLowerCase() }) return false
         if (!password.any { it.isDigit() }) return false
-        if (password.any { it in VALID_SPECIAL_CHARACTERS }) return false
+        if (!password.any { it in VALID_SPECIAL_CHARACTERS }) return false
 
         return true
     }
