@@ -24,11 +24,21 @@ class ShippingCalculator {
         require(distanceKm > 0) { "Distance must be greater than 0" }
         require(weightKg > 0) { "Weight must be greater than 0" }
 
-        val baseFee = 5.0
-        val distanceFee = distanceKm * 0.5
-        val weightFee = if (weightKg > 10) (weightKg - 10) * 1.5 else 0.0
+        val distanceFee = distanceKm * DISTANCE_FEE
+        val weightFee = if (weightKg > MAX_WEIGHT_WITHOUT_EXTRA_FEE) {
+            (weightKg - MAX_WEIGHT_WITHOUT_EXTRA_FEE) * WEIGHT_FEE
+        } else {
+            0.0
+        }
 
-        return baseFee + distanceFee + weightFee
+        return BASE_FEE + distanceFee + weightFee
+    }
+
+    companion object {
+        private const val BASE_FEE = 5.0
+        private const val DISTANCE_FEE = 0.5
+        private const val WEIGHT_FEE = 1.5
+        private const val MAX_WEIGHT_WITHOUT_EXTRA_FEE = 10.0
     }
 
 }
