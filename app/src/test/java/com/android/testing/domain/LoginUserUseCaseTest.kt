@@ -1,19 +1,22 @@
 package com.android.testing.domain
 
-import com.android.testing.data.FakeUserRepository
-import com.android.testing.data.StubLoginRepository
+import com.android.testing.domain.models.Result
+import com.android.testing.domain.models.User
+import com.android.testing.domain.models.UserId
 import com.android.testing.domain.repository.LoginRepository
 import com.android.testing.domain.repository.UserRepository
 import com.android.testing.domain.usecase.LoginUserUseCase
-import kotlinx.coroutines.runBlocking
+import io.mockk.coEvery
+import io.mockk.coJustRun
+import io.mockk.coVerify
+import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class LoginUserUseCaseTest {
 
-    private val loginRepository: LoginRepository = StubLoginRepository()
-    private val userRepository: UserRepository = FakeUserRepository()
+    private val loginRepository: LoginRepository = mockk()
+    private val userRepository: UserRepository = mockk(relaxed = false)
     private val suv = LoginUserUseCase(
         loginRepository = loginRepository,
         userRepository = userRepository
@@ -21,9 +24,24 @@ class LoginUserUseCaseTest {
 
     @Test
     fun `When login return success then save user`() = runTest {
-        val userName = "test name"
-        suv.invoke(userName, "test", "test")
-        assertEquals(userName, userRepository.get()!!.name)
+        val userId = UserId(1)
+        val userName = "carlos"
+        val userPassword = "password123"
+        val userEmail = "carlos@gmail.com"
+
+        coEvery {
+            loginRepository.login(
+                userName = userName,
+                userPassword = userPassword,
+                userEmail = userEmail
+            )
+        } returns Result.Success(userId)
+
+        coJustRun { userRepository.save(User(userId, userName, userEmail)) }
+
+        suv.invoke(userName, userPassword, userEmail)
+
+        coVerify(exactly = 1) { userRepository.save(User(userId, userName, userEmail) ) }
     }
 
 }
