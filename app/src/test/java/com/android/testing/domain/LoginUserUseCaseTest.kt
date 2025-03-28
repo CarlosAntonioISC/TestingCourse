@@ -7,28 +7,35 @@ import com.android.testing.domain.models.UserId
 import com.android.testing.domain.repository.LoginRepository
 import com.android.testing.domain.repository.UserRepository
 import com.android.testing.domain.usecase.LoginUserUseCase
+import com.android.testing.examples.LogSender
 import io.mockk.clearMocks
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
 class LoginUserUseCaseTest {
 
     private val loginRepository: LoginRepository = mockk()
-    private val userRepository: UserRepository = mockk(relaxed = false)
+    private val userRepository: UserRepository = mockk()
+    private val logSender: LogSender = mockk(relaxed = true)
     private val sut = LoginUserUseCase(
         loginRepository = loginRepository,
-        userRepository = userRepository
+        userRepository = userRepository,
+        logSender
     )
 
     @Before
     fun setUp() {
         clearMocks(loginRepository, userRepository)
     }
+
+    @After
+    fun tearDown() { }
 
     @Test
     fun `When login return success then save user`() = runTest {

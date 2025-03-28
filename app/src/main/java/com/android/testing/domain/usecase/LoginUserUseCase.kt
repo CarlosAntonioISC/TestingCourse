@@ -5,10 +5,12 @@ import com.android.testing.domain.models.DomainError
 import com.android.testing.domain.repository.LoginRepository
 import com.android.testing.domain.repository.UserRepository
 import com.android.testing.domain.models.Result
+import com.android.testing.examples.LogSender
 
 class LoginUserUseCase(
     private val loginRepository: LoginRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val logSender: LogSender
 ) {
 
     suspend operator fun invoke(
@@ -25,6 +27,7 @@ class LoginUserUseCase(
 
         return when (loginResult) {
             is Result.Error -> {
+                logSender.send("error")
                 loginResult
             }
             is Result.Success -> {
