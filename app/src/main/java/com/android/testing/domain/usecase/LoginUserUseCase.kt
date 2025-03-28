@@ -24,7 +24,9 @@ class LoginUserUseCase(
         )
 
         return when (loginResult) {
-            is Result.Error -> loginResult
+            is Result.Error -> {
+                loginResult
+            }
             is Result.Success -> {
                 val user = User(id = loginResult.data, name = userName, email = userEmail)
                 userRepository.save(user)
