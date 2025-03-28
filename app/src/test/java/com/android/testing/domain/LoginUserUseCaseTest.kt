@@ -1,5 +1,6 @@
 package com.android.testing.domain
 
+import com.android.testing.data.PrintLogSender
 import com.android.testing.domain.models.Result
 import com.android.testing.domain.models.ServerError
 import com.android.testing.domain.models.User
@@ -13,6 +14,8 @@ import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.mockk
+import io.mockk.spyk
+import io.mockk.verify
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
@@ -22,7 +25,7 @@ class LoginUserUseCaseTest {
 
     private val loginRepository: LoginRepository = mockk()
     private val userRepository: UserRepository = mockk()
-    private val logSender: LogSender = mockk(relaxed = true)
+    private val logSender: LogSender = spyk { PrintLogSender() }
     private val sut = LoginUserUseCase(
         loginRepository = loginRepository,
         userRepository = userRepository,
@@ -35,7 +38,8 @@ class LoginUserUseCaseTest {
     }
 
     @After
-    fun tearDown() { }
+    fun tearDown() {
+    }
 
     @Test
     fun `When login return success then save user`() = runTest {
@@ -66,6 +70,17 @@ class LoginUserUseCaseTest {
         sut.invoke("userName", "userPassword", "userEmail")
 
         coVerify(exactly = 0) { userRepository.save(any()) }
+    }
+
+    @Test
+    fun `When login return error then call log sender`() = runTest {
+        coEvery {
+            loginRepository.login(userName = any(), userPassword = any(), userEmail = any())
+        } returns Result.Error(ServerError)
+
+        sut.invoke("userName", "userPassword", "userEmail")
+
+        verify(exactly = 1) { logSender.send(any()) }
     }
 
 }
