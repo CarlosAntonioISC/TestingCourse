@@ -20,7 +20,7 @@ class LoginUserUseCaseTest {
 
     private val loginRepository: LoginRepository = mockk()
     private val userRepository: UserRepository = mockk(relaxed = false)
-    private val suv = LoginUserUseCase(
+    private val sut = LoginUserUseCase(
         loginRepository = loginRepository,
         userRepository = userRepository
     )
@@ -45,7 +45,7 @@ class LoginUserUseCaseTest {
         } returns Result.Success(userId)
         coJustRun { userRepository.save(User(userId, userName, userEmail)) }
 
-        suv.invoke(userName, userPassword, userEmail)
+        sut.invoke(userName, userPassword, userEmail)
 
         coVerify(exactly = 1) { userRepository.save(User(userId, userName, userEmail) ) }
     }
@@ -56,7 +56,7 @@ class LoginUserUseCaseTest {
             loginRepository.login(userName = any(), userPassword = any(), userEmail = any())
         } returns Result.Error(ServerError)
 
-        suv.invoke("userName", "userPassword", "userEmail")
+        sut.invoke("userName", "userPassword", "userEmail")
 
         coVerify(exactly = 0) { userRepository.save(any()) }
     }

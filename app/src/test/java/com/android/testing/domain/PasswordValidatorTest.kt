@@ -16,46 +16,46 @@ import org.junit.Test
 
 class PasswordValidatorTest {
 
-    private val suv = PasswordValidator()
+    private val sut = PasswordValidator()
 
     @Test
     fun `Given a password with uppercase, lowercase, digit, and number then isValid return true`() {
-        val result = suv.isValid("Password1!")
+        val result = sut.isValid("Password1!")
 
         assertTrue(result)
     }
 
     @Test
     fun `Given a short password then isValid return false`() {
-        val result = suv.isValid("Pass1!")
+        val result = sut.isValid("Pass1!")
 
         assertFalse(result)
     }
 
     @Test
     fun `Given a password without lowercase then isValid return false`() {
-        val result = suv.isValid("PASSWORD1!")
+        val result = sut.isValid("PASSWORD1!")
 
         assertFalse(result)
     }
 
     @Test
     fun `Given a password without uppercase then isValid return false`() {
-        val result = suv.isValid("password1!")
+        val result = sut.isValid("password1!")
 
         assertFalse(result)
     }
 
     @Test
     fun `Given a password without number then isValid return false`() {
-        val result = suv.isValid("Password!")
+        val result = sut.isValid("Password!")
 
         assertFalse(result)
     }
 
     @Test
     fun `Given a password without special character then isValid return false`() {
-        val result = suv.isValid("Password123")
+        val result = sut.isValid("Password123")
 
         assertFalse(result)
     }

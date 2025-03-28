@@ -13,7 +13,7 @@ class CurrencyFormatterTest(
     private val expected: String
 ) {
 
-    private val suv = CurrencyFormatter()
+    private val sut = CurrencyFormatter()
 
     companion object {
         @JvmStatic
@@ -31,7 +31,7 @@ class CurrencyFormatterTest(
 
     @Test
     fun `Validate currency format`() {
-        val result = suv.format(amount, currency)
+        val result = sut.format(amount, currency)
         assertEquals(expected, result)
     }
 

@@ -11,7 +11,7 @@ class PasswordValidatorTestParameterized(
     private val expected: Boolean
 ) {
 
-    private val suv = PasswordValidator()
+    private val sut = PasswordValidator()
 
     companion object {
         @JvmStatic
@@ -30,7 +30,7 @@ class PasswordValidatorTestParameterized(
 
    @Test
    fun `Validate passwords`() {
-       assertEquals(expected, suv.isValid(password))
+       assertEquals(expected, sut.isValid(password))
    }
 
 }
