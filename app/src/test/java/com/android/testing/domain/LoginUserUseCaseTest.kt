@@ -14,10 +14,12 @@ import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.mockk
+import io.mockk.slot
 import io.mockk.spyk
 import io.mockk.verify
 import kotlinx.coroutines.test.runTest
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -81,6 +83,18 @@ class LoginUserUseCaseTest {
         sut.invoke("userName", "userPassword", "userEmail")
 
         verify(exactly = 1) { logSender.send(any()) }
+    }
+
+    @Test
+    fun `When login return success then save the user with id from login response`() = runTest {
+        val userId = UserId(99)
+        val userSlot = slot<User>()
+        coEvery { loginRepository.login(any(), any(), any()) } returns Result.Success(userId)
+        coJustRun { userRepository.save(capture(userSlot)) }
+
+        sut.invoke("userName", "userPassword", "userEmail")
+
+        assertEquals(userId, userSlot.captured.id)
     }
 
 }
