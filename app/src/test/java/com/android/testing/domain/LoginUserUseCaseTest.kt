@@ -49,6 +49,7 @@ class LoginUserUseCaseTest {
         val userName = "carlos"
         val userPassword = "password123"
         val userEmail = "carlos@gmail.com"
+
         coEvery {
             loginRepository.login(
                 userName = userName,
@@ -56,6 +57,7 @@ class LoginUserUseCaseTest {
                 userEmail = userEmail
             )
         } returns Result.Success(userId)
+
         coJustRun { userRepository.save(User(userId, userName, userEmail)) }
 
         sut.invoke(userName, userPassword, userEmail)
