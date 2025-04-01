@@ -23,7 +23,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class LoginUserUseCaseTest {
+class LoginUserUseCaseBehaviorTest {
 
     private val loginRepository: LoginRepository = mockk()
     private val userRepository: UserRepository = mockk()
