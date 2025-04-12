@@ -2,6 +2,7 @@ package com.android.testing.di
 
 import android.content.Context
 import com.android.testing.domain.AgeValidator
+import com.android.testing.domain.AndroidEmailValidator
 import com.android.testing.domain.EmailValidator
 import com.android.testing.domain.NameValidator
 import com.android.testing.domain.PasswordValidator
@@ -14,7 +15,7 @@ object ViewModelProvider {
         return LoginViewModel(
             nameValidator = NameValidator(),
             ageValidator = AgeValidator(),
-            emailValidator = EmailValidator(),
+            emailValidator = AndroidEmailValidator(),
             passwordValidator = PasswordValidator(),
             loginUserUseCase = UseCaseProvider.provideLoginUser(context)
         )

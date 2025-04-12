@@ -2,10 +2,16 @@ package com.android.testing.domain
 
 import android.util.Patterns
 
-class EmailValidator {
+class AndroidEmailValidator: EmailValidator {
 
-    fun isValid(email: String): Boolean {
+    override fun isValid(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
+
+}
+
+interface EmailValidator {
+
+    fun isValid(email: String): Boolean
 
 }
