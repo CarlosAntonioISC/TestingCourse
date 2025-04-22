@@ -13,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.android.testing.di.ModuleViewModel
 import com.android.testing.di.ViewModelFactory
 import com.android.testing.ui.home.HomeScreen
+import com.android.testing.ui.home.HomeViewModel
 import com.android.testing.ui.login.LoginScreen
 import com.android.testing.ui.login.LoginViewModel
 
@@ -54,7 +55,17 @@ fun TestingCourseApp(startDestination: Destinations) {
         }
 
         composable(route = Destinations.HOME.name) {
-            HomeScreen()
+
+            val viewModel = viewModel<HomeViewModel>(
+                factory = ViewModelFactory(context, ModuleViewModel.HOME)
+            )
+
+            val uiState = viewModel.uiState.collectAsState().value
+
+            HomeScreen(
+                uiState = uiState,
+                modifier = Modifier.fillMaxSize()
+            )
         }
 
     }

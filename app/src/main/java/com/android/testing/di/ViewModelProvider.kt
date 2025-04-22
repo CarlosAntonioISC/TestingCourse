@@ -7,6 +7,7 @@ import com.android.testing.domain.EmailValidator
 import com.android.testing.domain.NameValidator
 import com.android.testing.domain.PasswordValidator
 import com.android.testing.ui.MainActivityViewModel
+import com.android.testing.ui.home.HomeViewModel
 import com.android.testing.ui.login.LoginViewModel
 
 object ViewModelProvider {
@@ -23,6 +24,12 @@ object ViewModelProvider {
 
     fun provideMain(context: Context): MainActivityViewModel {
         return MainActivityViewModel(
+            userRepository = RepositoryProvider.provideUserRepository(context)
+        )
+    }
+
+    fun provideHome(context: Context): HomeViewModel {
+        return HomeViewModel(
             userRepository = RepositoryProvider.provideUserRepository(context)
         )
     }
