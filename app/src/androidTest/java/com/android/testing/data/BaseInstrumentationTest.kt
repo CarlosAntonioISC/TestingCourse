@@ -9,7 +9,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 
-abstract class BaseEndToEndClass {
+abstract class BaseInstrumentationTest {
 
     @get:Rule
     val mockWebServerRule = MockWebServerRule()
@@ -17,7 +17,8 @@ abstract class BaseEndToEndClass {
 
     @Before
     fun setUp() {
-        idlingResource = OkHttp3IdlingResource.create("OkHttp", )
+        DataProvider.baseTestingUrl = mockWebServerRule.mockWebServer.url("/").toString()
+        idlingResource = OkHttp3IdlingResource.create("OkHttp", DataProvider.okHttpClient)
         IdlingRegistry.getInstance().register(idlingResource)
     }
 
