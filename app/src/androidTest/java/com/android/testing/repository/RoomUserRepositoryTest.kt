@@ -1,9 +1,9 @@
-package com.android.testing.data.repository
+package com.android.testing.repository
 
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import androidx.test.core.app.ApplicationProvider
 import com.android.testing.data.database.AppDatabase
+import com.android.testing.data.repository.RoomUserRepository
 import com.android.testing.domain.models.User
 import com.android.testing.domain.models.UserId
 import kotlinx.coroutines.test.runTest

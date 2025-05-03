@@ -1,4 +1,4 @@
-package com.android.testing.data.idlingresources
+package com.android.testing.idlingresources
 
 import androidx.annotation.CheckResult
 import androidx.test.espresso.IdlingResource

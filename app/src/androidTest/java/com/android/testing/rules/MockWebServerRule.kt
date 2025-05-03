@@ -1,4 +1,4 @@
-package com.android.testing.data.rules
+package com.android.testing.rules
 
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse

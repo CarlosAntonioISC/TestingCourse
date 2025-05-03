@@ -1,9 +1,9 @@
-package com.android.testing.data
+package com.android.testing
 
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.IdlingResource
-import com.android.testing.data.idlingresources.OkHttp3IdlingResource
-import com.android.testing.data.rules.MockWebServerRule
+import com.android.testing.idlingresources.OkHttp3IdlingResource
+import com.android.testing.rules.MockWebServerRule
 import com.android.testing.di.DataProvider
 import org.junit.After
 import org.junit.Before
