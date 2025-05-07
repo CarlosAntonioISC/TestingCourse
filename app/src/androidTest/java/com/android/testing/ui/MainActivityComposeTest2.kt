@@ -1,38 +1,25 @@
 package com.android.testing.ui
 
 import androidx.compose.ui.test.hasSetTextAction
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.test.core.app.ActivityScenario
-import com.android.testing.BaseInstrumentationTest
-import kotlinx.coroutines.test.runTest
+import com.android.testing.rules.BaseInstrumentationRule
 import org.junit.Rule
 import org.junit.Test
 
-class MainActivityComposeTest: BaseInstrumentationTest() {
+class MainActivityComposeTest2 {
 
-    @get:Rule
-    val composeTestRule = createComposeRule()
+    @get:Rule(order = 1)
+    val baseInstrumentationRule = BaseInstrumentationRule()
+    @get:Rule(order = 2)
+    val composeTestRule = createAndroidComposeRule<MainActivityCompose>()
 
     @Test
     fun whenTheFormIsFilledCorrectlyThenLogIn() {
-        ActivityScenario.launch(MainActivityCompose::class.java)
-
-        //composeTestRule
-        //    .onNode(hasText("Nombre") and hasSetTextAction())
-        //    .performTextInput("Pedro")
-
-        //composeTestRule
-        //    .onNodeWithContentDescription("Nombre")
-        //    .performTextInput("Pedro")
-
-        //composeTestRule
-        //    .onNodeWithTag("Nombre")
-        //    .performTextInput("Pedro")
-
         val fields = composeTestRule.onAllNodes(hasSetTextAction())
         fields[0].performTextInput("Pedro")
         fields[1].performTextInput("Password123-")
@@ -49,5 +36,6 @@ class MainActivityComposeTest: BaseInstrumentationTest() {
 
         composeTestRule.onNodeWithText("Bienvenido Pedro").assertExists()
     }
+
 
 }
