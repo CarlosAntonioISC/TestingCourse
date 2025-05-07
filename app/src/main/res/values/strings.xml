@@ -11,4 +11,20 @@
     <string name="sign_in">Registrarse</string>
     <string name="password">Contraseña</string>
     <string name="supporting_text_password">Mínimo 8 caracteres, una letra mayúscula, una letra minúscula y un dígito</string>
+    <string name="test">  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam dictum,
+    diam in bibendum venenatis, tellus lorem posuere arcu, ut fringilla lacus erat non elit. Proin euismod erat vitae nisi
+    sollicitudin, eget bibendum metus malesuada. In at libero sed nunc venenatis imperdiet sed ornare turpis.
+    Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum.
+    Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </string>
+
 </resources>

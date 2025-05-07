@@ -64,6 +64,7 @@ fun TestingCourseApp(startDestination: Destinations) {
 
             HomeScreen(
                 uiState = uiState,
+                onClick = { },
                 modifier = Modifier.fillMaxSize()
             )
         }
