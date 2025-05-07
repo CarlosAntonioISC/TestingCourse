@@ -46,6 +46,7 @@ fun CustomEditText(
         )
         TextField(
             value = value,
+            //label = { Text(text = label) },
             onValueChange = onValueChange,
             shape = RoundedCornerShape(8.dp),
             keyboardOptions = KeyboardOptions(
@@ -71,6 +72,8 @@ fun CustomEditText(
                 }
             },
             modifier = modifier
+                //.semantics { contentDescription = label }
+                //.testTag(label)
                 .fillMaxWidth()
                 .padding(top = 8.dp),
             colors = TextFieldDefaults.colors(
