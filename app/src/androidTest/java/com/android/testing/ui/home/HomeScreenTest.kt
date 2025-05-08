@@ -25,7 +25,6 @@ class HomeScreenTest {
        }
 
        composeTestRule.onNodeWithText("Bienvenido Pedro").assertExists()
-       Thread.sleep(10000)
    }
 
     @Test
@@ -46,8 +45,6 @@ class HomeScreenTest {
         composeTestRule.onNodeWithText("Logout").performScrollTo().performClick()
 
         assertTrue(wasClicked)
-
-        Thread.sleep(10000)
     }
 
 }
