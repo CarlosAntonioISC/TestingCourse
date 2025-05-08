@@ -55,10 +55,10 @@ fun TestingCourseApp(startDestination: Destinations) {
         }
 
         composable(route = Destinations.HOME.name) {
-
             val viewModel = viewModel<HomeViewModel>(
                 factory = ViewModelFactory(context, ModuleViewModel.HOME)
             )
+
 
             val uiState = viewModel.uiState.collectAsState().value
 

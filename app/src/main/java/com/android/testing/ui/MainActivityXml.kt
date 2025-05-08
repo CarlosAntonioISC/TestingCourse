@@ -3,14 +3,13 @@ package com.android.testing.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
+import com.android.testing.R
 import com.android.testing.databinding.ActivityMainBinding
 import com.android.testing.di.ModuleViewModel
 import com.android.testing.di.ViewModelFactory
-import com.android.testing.ui.home.HomeFragment
-import com.android.testing.ui.login.LoginFragment
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class MainActivityXml : AppCompatActivity() {
@@ -29,17 +28,21 @@ class MainActivityXml : AppCompatActivity() {
 
     private fun collectUiState() {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.startDestination.collect {
-                    handleDestination(it)
-                }
-            }
+            val destination = viewModel.startDestination.first { it != null }
+            handleDestination(destination)
         }
     }
 
     private fun handleDestination(destination: Destinations?) {
-
-
+        val navController = findNavController(R.id.nav_host_fragment)
+        val navInflater = navController.navInflater
+        val graph = navInflater.inflate(R.navigation.nav_graph)
+        when (destination) {
+            Destinations.LOGIN -> graph.setStartDestination(R.id.loginFragment)
+            Destinations.HOME -> graph.setStartDestination(R.id.homeFragment)
+            else -> Unit
+        }
+        navController.graph = graph
     }
 
 }

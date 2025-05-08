@@ -19,6 +19,9 @@
       <SelectionState runConfigName="whenFontSizeIsIncreasedThenButtonIsStillVisible()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="MainActivityXml">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
