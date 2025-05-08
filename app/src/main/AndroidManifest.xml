@@ -15,9 +15,8 @@
         android:theme="@style/Theme.TestingCourse"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivityCompose"
+            android:name=".ui.MainActivityXml"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.TestingCourse">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
