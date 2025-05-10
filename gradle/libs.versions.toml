@@ -16,6 +16,7 @@ navigationCompose = "2.8.9"
 coroutines = "1.10.1"
 appcompat = "1.7.0"
 viewbinding = "8.10.0"
+junitKtx = "1.2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -51,6 +52,7 @@ turbine = { group = "app.cash.turbine", name = "turbine", version = "1.1.0" }
 mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version = "4.12.0" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "viewbinding" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
