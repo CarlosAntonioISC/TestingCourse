@@ -24,28 +24,15 @@ class MainActivityXmlTest {
     
     @Test
     fun whenTheFormIsFilledCorrectlyThenLogIn() {
+        MainActivityXmlRobot()
+            .enterName("Pedro")
+            .enterPassword("Password123-")
+            .enterEmail("test@gmail.com")
+            .enterAge("18")
+            .acceptTerms()
+            .clickCreateAccount()
+            .assertWelcomeMessageIsDisplayed("Pedro")
 
-        onView(withId(R.id.input_name))
-            .perform(typeText("Pedro"), closeSoftKeyboard())
-
-        onView(withId(R.id.input_password))
-            .perform(typeText("Password123-"), closeSoftKeyboard())
-
-        onView(withId(R.id.input_email))
-            .perform(typeText("test@gmail.com"), closeSoftKeyboard())
-
-        onView(withId(R.id.input_age))
-            .perform(typeText("18"), closeSoftKeyboard())
-
-
-        onView(withId(R.id.checkbox_terms))
-            .perform(click())
-
-        onView(withId(R.id.btn_create_account))
-            .perform(click())
-
-        onView(withText("Bienvenido Pedro"))
-            .check(matches(isDisplayed()))
     }
 
 }
